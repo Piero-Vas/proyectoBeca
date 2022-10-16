@@ -1,16 +1,16 @@
-# beca
+# Proyecto Beca
 
-A new Flutter project.
+Aplicación de Control de Dispotivos.
 
-## Getting Started
+## Control de Dispositivos
 
-This project is a starting point for a Flutter application.
+Podrás controlar todos las habitaciones de tu hogar por ejemplo:
 
-A few resources to get you started if this is your first Flutter project:
+- Sala
+- Dormitorio
+- Dormitorio de Bebé
+- Biblioteca
+- Baños
+- Cocina
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para ver el codigo en VScode desde tu navegador [Click Aquí](https://github.dev/Piero-Vas/proyectoBeca)
