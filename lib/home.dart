@@ -6,18 +6,17 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
-
+  int indexNB = 0;
+  Home(this.indexNB,{super.key});
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     InicioPage(),
     DevicesPage(),
-    LoginPage()
+    PerfilPage(),
   ];
 
   @override
@@ -26,7 +25,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
+          child: _widgetOptions.elementAt(widget.indexNB),
         ),
       ),
       bottomNavigationBar: Container(
@@ -56,10 +55,10 @@ class _HomeState extends State<Home> {
                   text: 'Perfil',
                 ),
               ],
-              selectedIndex: _selectedIndex,
+              selectedIndex: widget.indexNB,
               onTabChange: (index) {
                 setState(() {
-                  _selectedIndex = index;
+                  widget.indexNB = index;
                 });
               },
             ),

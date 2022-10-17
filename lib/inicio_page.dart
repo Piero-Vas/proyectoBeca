@@ -1,3 +1,4 @@
+import 'package:beca/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -108,10 +109,12 @@ Widget tajetas(imagen, titulo, dispositivos, context) {
     ),
     child: ElevatedButton(
         onPressed: () {
-          //         Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => const DevicesPage()),
-          // );
+          Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(1),
+                          ),
+                        );
         },
         style: ElevatedButton.styleFrom(
             backgroundColor: Colors.white,

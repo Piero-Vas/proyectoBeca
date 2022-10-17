@@ -1,15 +1,17 @@
-import 'package:beca/registro_page.dart';
+import 'package:beca/editarperfil_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class PerfilPage extends StatefulWidget {
+  const PerfilPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<PerfilPage> createState() => _PerfilPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _PerfilPageState extends State<PerfilPage> {
+   bool _switchValue = false;
+    bool _switchValue2 = false;
   mostrarMensaje(BuildContext context) {
     showDialog(
       context: context,
@@ -27,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text(
                 "Welcome",
-                style: GoogleFonts.raleway(
+                style: GoogleFonts.comfortaa(
                   fontSize: 14.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -38,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 textAlign: TextAlign.start,
-                style: GoogleFonts.raleway(
+                style: GoogleFonts.comfortaa(
                   fontSize: 12.0,
                   fontWeight: FontWeight.normal,
                   color: Colors.black54,
@@ -59,240 +61,167 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(22.0),
-            child: Column(
-              children: [
-                Image.asset(
-                  'assets/png/logo2.png',
-                  height: 90.0,
-                ),
-                const SizedBox(
-                  height: 22.0,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "Login to your Account",
-                      style: GoogleFonts.raleway(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                          color: Colors.black.withOpacity(0.80)),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    "Perfil",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.comfortaa(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF5090FE),
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 18.0,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.07),
-                        offset:const Offset(5, 5),
-                        blurRadius: 12.0,
-                      ),
-                    ],
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Username",
-                      hintStyle: GoogleFonts.raleway(
-                        fontSize: 14,
-                        color: Colors.black45,
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
-                      // icon: Icon(Icons.verified_user),
-                      // prefixIcon: Icon(Icons.add),
-                      // suffixIcon: Icon(Icons.ac_unit_outlined),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    width: 200,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          "assets/png/hombre.png",
+                        ),
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.07),
-                        offset: const Offset(5, 5),
-                        blurRadius: 12.0,
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 20,
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                      hintStyle: GoogleFonts.raleway(
-                        fontSize: 14,
-                        color: Colors.black45,
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
-                      // icon: Icon(Icons.verified_user),
-                      // prefixIcon: Icon(Icons.add),
-                      // suffixIcon: Icon(Icons.ac_unit_outlined),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
+                  Text(
+                    "Piero Vasquez",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.comfortaa(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF5090FE),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                Container(
-                  height: 54.0,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xff1E319D).withOpacity(0.5),
-                        blurRadius: 12,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 15,
                   ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      mostrarMensaje(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff1E319D),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                      ),
-                    ),
-                    child: Text(
-                      "Sign in",
-                      style: GoogleFonts.raleway(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 60.0,
-                ),
-                Text(
-                  "- Or sign in with -",
-                  style: GoogleFonts.raleway(
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black45,
-                  ),
-                ),
-                const SizedBox(
-                  height: 26.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30.0, vertical: 12.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14.0),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.06),
-                              offset: const Offset(4, 4),
-                              blurRadius: 12.0),
-                        ],
-                      ),
-                      child: Image.asset(
-                        "assets/png/google.png",
-                        height: 30.0,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30.0, vertical: 12.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14.0),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.06),
-                              offset: const Offset(4, 4),
-                              blurRadius: 12.0),
-                        ],
-                      ),
-                      child: Image.asset(
-                        "assets/png/facebook.png",
-                        height: 30.0,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30.0, vertical: 12.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14.0),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.06),
-                              offset: const Offset(4, 4),
-                              blurRadius: 12.0),
-                        ],
-                      ),
-                      child: Image.asset(
-                        "assets/png/twitter.png",
-                        height: 30.0,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: GoogleFonts.raleway(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
+                  Container(
+                    width: 200,
+                    height: 60,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    child: ElevatedButton(
+                      onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const RegistroPage(),
+                            builder: (context) => const EditarPerfilPage(),
                           ),
                         );
                       },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF5090FE),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
                       child: Text(
-                        "Sign up",
-                        style: GoogleFonts.raleway(
-                          color: const Color(0xff1E319D),
-                          fontWeight: FontWeight.bold,
-                        ),
+                        "Editar Perfil",
+                        style: GoogleFonts.comfortaa(fontSize: 18),
                       ),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  const SizedBox(
+                    height: 35,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Permisos",
+                        textAlign: TextAlign.start,
+                        style: GoogleFonts.comfortaa(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFF5090FE),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFF0F6FF),
+                                  borderRadius: BorderRadius.circular(10)),
+                              padding: const EdgeInsets.all(10),
+                              child: Image.asset(
+                                'assets/png/home_inteligent.png',
+                                height: 30.0,
+                                width: 30.0,
+                              ),
+                            ),
+                            const SizedBox(width: 10,),
+                            const Text("Apagar todos los Dispositivos"),
+                            Expanded(child: Container()),
+                            Switch(
+                              value: _switchValue,
+                              onChanged: (bool valueIn) {
+                                setState(() {
+                                  _switchValue = valueIn;
+                                });
+                              }),
+                          ],
+                        ),
+                        const SizedBox(
+                    height: 15,
+                  ),
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFF0F6FF),
+                                  borderRadius: BorderRadius.circular(10)),
+                              padding: const EdgeInsets.all(10),
+                              child: Image.asset(
+                                'assets/png/notificacion.png',
+                                height: 30.0,
+                                width: 30.0,
+                              ),
+                            ),
+                            const SizedBox(width: 10,),
+                            const Text("Notificaciones"),
+                            Expanded(child: Container()),
+                            Switch(
+                              value: _switchValue2,
+                              onChanged: (bool valueIn) {
+                                setState(() {
+                                  _switchValue2 = valueIn;
+                                });
+                              }),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
+}
+
+
+permisos(){
+  return Row();
 }

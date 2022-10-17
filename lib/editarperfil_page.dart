@@ -2,19 +2,14 @@ import 'package:beca/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RegistroPage extends StatefulWidget {
-  const RegistroPage({super.key});
+class EditarPerfilPage extends StatefulWidget {
+  const EditarPerfilPage({super.key});
 
   @override
-  State<RegistroPage> createState() => _RegistroPageState();
+  State<EditarPerfilPage> createState() => _EditarPerfilPageState();
 }
 
-class _RegistroPageState extends State<RegistroPage> {
-  final TextEditingController _passValue = TextEditingController();
-  final TextEditingController _passValueCheck = TextEditingController();
-  final TextEditingController _emailValue = TextEditingController();
-  final TextEditingController _nameValue = TextEditingController();
-  final TextEditingController _lastnameValue = TextEditingController();
+class _EditarPerfilPageState extends State<EditarPerfilPage> {
 
   mostrarMensaje(BuildContext context, input) {
     showDialog(
@@ -28,34 +23,17 @@ class _RegistroPageState extends State<RegistroPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.asset(
-                'assets/png/cancelar.png',
-                height: 50.0,
+                'assets/png/confirm.png',
+                height: 60.0,
               ),
               const SizedBox(
                 height: 12.0,
               ),
               Row(
                 children: [
+                  
                   Text(
-                    "Su ",
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.comfortaa(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  Text(
-                    "$input ",
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.comfortaa(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  Text(
-                    "se encuentra vacío",
+                    "¿Seguro que quiere editar su perfil?",
                     textAlign: TextAlign.start,
                     style: GoogleFonts.comfortaa(
                       fontSize: 15.0,
@@ -68,15 +46,28 @@ class _RegistroPageState extends State<RegistroPage> {
             ],
           ),
           actions: [
-            ElevatedButton(
+            
+            OutlinedButton(
               onPressed: () {
                 Navigator.pop(context);
+              },
+              child: const Text("Cancelar"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(2),
+                          ),
+                        );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF5090FE),
               ),
               child: const Text("Aceptar"),
-            )
+            ),
+            
           ],
         );
       },
@@ -94,31 +85,33 @@ class _RegistroPageState extends State<RegistroPage> {
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(30),
-                  decoration: const BoxDecoration(
-                      color: Color(0xFF5090FE),
-                      borderRadius: BorderRadius.all(Radius.circular(100))),
-                  child: Image.asset(
-                    'assets/png/logo2.png',
-                    height: 90.0,
+                    width: 200,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          "assets/png/hombre.png",
+                        ),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
-                ),
                 const SizedBox(
                   height: 30.0,
                 ),
-                Row(
-                  children: [
-                    Text(
-                      "Bienvenido, Complete el registro",
-                      style: GoogleFonts.comfortaa(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                          color: Colors.black54),
-                    ),
-                  ],
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    "¿Cómo estas Piero?, Edita tu Perfil aquí",
+                    style: GoogleFonts.comfortaa(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        color: Colors.black54),
+                        textAlign: TextAlign.start,
+                  ),
                 ),
                 const SizedBox(
-                  height: 18.0,
+                  height: 20.0,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -130,8 +123,8 @@ class _RegistroPageState extends State<RegistroPage> {
                       ),
                     ],
                   ),
-                  child: TextField(
-                    controller: _nameValue,
+                  child: TextFormField(
+                    initialValue: "Piero Vasquez",
                     decoration: InputDecoration(
                       hintText: "Nombre",
                       hintStyle: GoogleFonts.comfortaa(
@@ -167,8 +160,8 @@ class _RegistroPageState extends State<RegistroPage> {
                       ),
                     ],
                   ),
-                  child: TextField(
-                    controller: _lastnameValue,
+                  child: TextFormField(
+                    initialValue: "Vasquez Riveros",
                     decoration: InputDecoration(
                       hintText: "Apellido",
                       hintStyle: GoogleFonts.comfortaa(
@@ -204,8 +197,8 @@ class _RegistroPageState extends State<RegistroPage> {
                       ),
                     ],
                   ),
-                  child: TextField(
-                    controller: _emailValue,
+                  child: TextFormField(
+                    initialValue: "piero.vasquezriveros@gmail.com",
                     decoration: InputDecoration(
                       hintText: "Correo",
                       hintStyle: GoogleFonts.comfortaa(
@@ -239,8 +232,8 @@ class _RegistroPageState extends State<RegistroPage> {
                       ),
                     ],
                   ),
-                  child: TextField(
-                    controller: _passValue,
+                  child: TextFormField(
+                    initialValue: "123456",
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Contraseña",
@@ -277,8 +270,8 @@ class _RegistroPageState extends State<RegistroPage> {
                       ),
                     ],
                   ),
-                  child: TextField(
-                    controller: _passValueCheck,
+                  child: TextFormField(
+                    initialValue: "123456",
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Confirmar Contraseña",
@@ -319,20 +312,8 @@ class _RegistroPageState extends State<RegistroPage> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      _nameValue.text.isEmpty
-                          ? mostrarMensaje(context, "Nombre")
-                          : _lastnameValue.text.isEmpty
-                              ? mostrarMensaje(context, "Apellido")
-                              : _emailValue.text.isEmpty
-                                  ? mostrarMensaje(context, "Correo")
-                                  : _passValue.text.isEmpty
-                                      ? mostrarMensaje(context, "Contraseña")
-                                      : Navigator.of(context)
-                                          .pushAndRemoveUntil(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Home(0)),
-                                              (Route<dynamic> route) => false);
+                      mostrarMensaje(context, "Nombre");
+                     
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF5090FE),
@@ -341,7 +322,7 @@ class _RegistroPageState extends State<RegistroPage> {
                       ),
                     ),
                     child: Text(
-                      "Registrar",
+                      "Guardar Datos",
                       style: GoogleFonts.comfortaa(
                         fontWeight: FontWeight.bold,
                       ),

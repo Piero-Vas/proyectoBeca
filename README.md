@@ -4,7 +4,7 @@ Aplicación de Control de Dispotivos.
 
 ## Control de Dispositivos
 
-Podrás controlar todos las habitaciones de tu hogar por ejemplo:
+Podrás controlar todas las habitaciones de tu hogar por ejemplo:
 
 - Sala
 - Dormitorio

@@ -1,4 +1,4 @@
-import 'package:beca/home.dart';
+import 'package:beca/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
+      home: const LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,20 +1,18 @@
 import 'package:beca/home.dart';
+import 'package:beca/registro_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RegistroPage extends StatefulWidget {
-  const RegistroPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<RegistroPage> createState() => _RegistroPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegistroPageState extends State<RegistroPage> {
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passValue = TextEditingController();
-  final TextEditingController _passValueCheck = TextEditingController();
   final TextEditingController _emailValue = TextEditingController();
-  final TextEditingController _nameValue = TextEditingController();
-  final TextEditingController _lastnameValue = TextEditingController();
 
   mostrarMensaje(BuildContext context, input) {
     showDialog(
@@ -109,7 +107,7 @@ class _RegistroPageState extends State<RegistroPage> {
                 Row(
                   children: [
                     Text(
-                      "Bienvenido, Complete el registro",
+                      "Ingrese a su cuenta",
                       style: GoogleFonts.comfortaa(
                           fontWeight: FontWeight.bold,
                           fontSize: 16.0,
@@ -119,80 +117,6 @@ class _RegistroPageState extends State<RegistroPage> {
                 ),
                 const SizedBox(
                   height: 18.0,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.07),
-                        offset: const Offset(5, 5),
-                        blurRadius: 12.0,
-                      ),
-                    ],
-                  ),
-                  child: TextField(
-                    controller: _nameValue,
-                    decoration: InputDecoration(
-                      hintText: "Nombre",
-                      hintStyle: GoogleFonts.comfortaa(
-                        fontSize: 14,
-                        color: Colors.black45,
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
-                      icon: const Icon(
-                        Icons.account_circle_outlined,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.07),
-                        offset: const Offset(5, 5),
-                        blurRadius: 12.0,
-                      ),
-                    ],
-                  ),
-                  child: TextField(
-                    controller: _lastnameValue,
-                    decoration: InputDecoration(
-                      hintText: "Apellido",
-                      hintStyle: GoogleFonts.comfortaa(
-                        fontSize: 14,
-                        color: Colors.black45,
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
-                      icon: const Icon(
-                        Icons.account_circle_outlined,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -265,44 +189,6 @@ class _RegistroPageState extends State<RegistroPage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.07),
-                        offset: const Offset(5, 5),
-                        blurRadius: 12.0,
-                      ),
-                    ],
-                  ),
-                  child: TextField(
-                    controller: _passValueCheck,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "Confirmar Contraseña",
-                      hintStyle: GoogleFonts.comfortaa(
-                        fontSize: 14,
-                        color: Colors.black45,
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
-                      icon: const Icon(Icons.key),
-                      // prefixIcon: Icon(Icons.add),
-                      suffixIcon: const Icon(Icons.remove_red_eye),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
                   height: 40.0,
                 ),
                 Container(
@@ -319,20 +205,14 @@ class _RegistroPageState extends State<RegistroPage> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      _nameValue.text.isEmpty
-                          ? mostrarMensaje(context, "Nombre")
-                          : _lastnameValue.text.isEmpty
-                              ? mostrarMensaje(context, "Apellido")
-                              : _emailValue.text.isEmpty
-                                  ? mostrarMensaje(context, "Correo")
-                                  : _passValue.text.isEmpty
-                                      ? mostrarMensaje(context, "Contraseña")
-                                      : Navigator.of(context)
-                                          .pushAndRemoveUntil(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Home(0)),
-                                              (Route<dynamic> route) => false);
+                      _emailValue.text.isEmpty
+                          ? mostrarMensaje(context, "Correo")
+                          : _passValue.text.isEmpty
+                              ? mostrarMensaje(context, "Contraseña")
+                              : Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) => Home(0)),
+                                  (Route<dynamic> route) => false);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF5090FE),
@@ -341,12 +221,116 @@ class _RegistroPageState extends State<RegistroPage> {
                       ),
                     ),
                     child: Text(
-                      "Registrar",
+                      "Ingresar",
                       style: GoogleFonts.comfortaa(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 60.0,
+                ),
+                Text(
+                  "- Ó -",
+                  style: GoogleFonts.comfortaa(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black45,
+                  ),
+                ),
+                const SizedBox(
+                  height: 26.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 12.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.06),
+                              offset: const Offset(4, 4),
+                              blurRadius: 12.0),
+                        ],
+                      ),
+                      child: Image.asset(
+                        "assets/png/google.png",
+                        height: 30.0,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 12.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.06),
+                              offset: const Offset(4, 4),
+                              blurRadius: 12.0),
+                        ],
+                      ),
+                      child: Image.asset(
+                        "assets/png/facebook.png",
+                        height: 30.0,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 12.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.06),
+                              offset: const Offset(4, 4),
+                              blurRadius: 12.0),
+                        ],
+                      ),
+                      child: Image.asset(
+                        "assets/png/twitter.png",
+                        height: 30.0,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 40.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "¿No tienes una Cuenta? ",
+                      style: GoogleFonts.comfortaa(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegistroPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Registrate",
+                        style: GoogleFonts.comfortaa(
+                          color: const Color(0xFF5090FE),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
